@@ -21,21 +21,17 @@
 
 N: int = int(input())
 
-reply: list = [0] * N
-topics: list = [''] * N
+popular_theme_counter: dict[str, int] = {}
+relative_idx_map: dict[int, int] = {}
+
 for i in range(N):
-    num = int(input())
-    if num == 0:
-        reply[i] = i
-        topics[i]=input()
-        input()
-    else:
-        reply[i] = reply[num - 1]
-        input()
-cnt_replys = {}
-for rep in reply:
-    cnt_replys[rep] = cnt_replys.get(rep, 0) + 1
-ans = []
-for topic in cnt_replys:
-    ans.append((-cnt_replys[topic],topic))
-print(topics[min(ans)[1]])
+    idx = i + 1
+    relative_idx = int(input())
+    if relative_idx == 0:
+        theme_name = input()
+        popular_theme_counter[theme_name] = 0
+    message = input()
+    relative_idx_map[idx] = relative_idx
+
+if __name__=='__main__':
+    pass
