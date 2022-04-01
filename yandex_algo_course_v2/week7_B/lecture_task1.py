@@ -2,7 +2,7 @@
 
 p_in_site :int = -1
 p_out_site :int = 1
-def maxvisitorsonline(n,tin,tout):
+def maxvisitorsonline(n, tin, tout):
     events = []
     for i in range(n):
         events.append((tin[i], p_in_site)) # приход

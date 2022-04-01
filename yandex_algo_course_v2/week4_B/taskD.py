@@ -37,7 +37,7 @@ def second_order_distrib(
 
 
 file_object: IO[str] = open("yandex_algo_course_v2/week4_B/inputD.txt")
-counter: Counter[str, int] = Counter()
+counter: Dict[str, int] = Counter()
 result: Dict[str, int] = {}
 remainder: Dict[str, float] = {}
 while True:
