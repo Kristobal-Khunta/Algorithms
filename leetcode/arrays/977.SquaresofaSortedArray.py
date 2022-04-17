@@ -3,7 +3,7 @@
 
 
 class Solution:
-    def sortedSquares(self, nums: List[int]) -> List[int]:
+    def sortedSquares(self, nums: list[int]) -> list[int]:
         if nums[0] >= 0:
             return [num**2 for num in nums]
         r_pointer = len(nums) - 1
