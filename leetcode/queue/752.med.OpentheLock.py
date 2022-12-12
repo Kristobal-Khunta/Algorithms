@@ -1,7 +1,18 @@
 from typing import List
+import collections
 
 
 class Solution:
+    """
+    Space: O(A^N+D) for the queue and the set dead.
+
+    time: O(N^2*A^N+D)
+    a- number of digits in alphabet
+    N - nuber of digits in lock
+    D - size of deadends
+    We might visit every lock combination, plus we need to instantiate our set dead. When we visit every lock combination, we spend O(N^2) time enumerating through and constructing each node.
+    """
+
     def neighbors(self, code):
         for i in range(4):
             x = int(code[i])
@@ -31,4 +42,29 @@ class Solution:
                     queue.append(n)
                     visited.add(n)
 
+        return -1
+
+
+class Solution(object):
+    def openLock(self, deadends, target):
+        def neighbors(node):
+            for i in xrange(4):
+                x = int(node[i])
+                for d in (-1, 1):
+                    y = (x + d) % 10
+                    yield node[:i] + str(y) + node[i + 1 :]
+
+        dead = set(deadends)
+        queue = collections.deque([("0000", 0)])
+        seen = {"0000"}
+        while queue:
+            node, depth = queue.popleft()
+            if node == target:
+                return depth
+            if node in dead:
+                continue
+            for nei in neighbors(node):
+                if nei not in seen:
+                    seen.add(nei)
+                    queue.append((nei, depth + 1))
         return -1
